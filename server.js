@@ -1,21 +1,13 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import todoRoutes from './routes/todos.js';
-import { errorHandler } from './middleware/errorHandler.js';
+require('dotenv').config();
+const app = require('./app');
+const { connectDB, sequelize } = require('./config/db');
 
-dotenv.config();
-const app = express();
+connectDB();
 
-// Middleware
-app.use(express.json());
-app.use(cors());
+const PORT = process.env.PORT || 5000;
 
-// Routes
-app.use('/api/todos', todoRoutes);
-
-// Error handler
-app.use(errorHandler);
-
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Sync Sequelize models
+sequelize.sync({ alter: true }).then(() => {
+  console.log('All models have been synchronized.');
+  app.listen(PORT, () => console.log(`The server is running on port ${PORT}.`));
+});
