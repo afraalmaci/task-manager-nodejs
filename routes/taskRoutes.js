@@ -8,7 +8,7 @@ const {
   deleteTask,
 } = require('../controllers/taskController');
 
-router.use(protect); // Tüm route’lar JWT ile korunsun
+router.use(protect);
 
 router.get('/', getTasks);
 router.post('/', createTask);

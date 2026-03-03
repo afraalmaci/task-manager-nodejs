@@ -15,18 +15,18 @@ const protect = async (req, res, next) => {
       const user = await User.findByPk(decoded.id);
 
       if (!user) {
-        return res.status(401).json({ message: 'Yetkisiz' });
+        return res.status(401).json({ message: 'Unauthorized' });
       }
 
       req.user = user;
       next();
     } catch (error) {
-      return res.status(401).json({ message: 'Token geçersiz' });
+      return res.status(401).json({ message: 'Token invalid' });
     }
   }
 
   if (!token) {
-    return res.status(401).json({ message: 'Token yok' });
+    return res.status(401).json({ message: 'No tokens' });
   }
 };
 

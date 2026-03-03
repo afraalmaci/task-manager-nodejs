@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <h1>Task Manager</h1>
+
+    <!-- AUTH SECTION -->
+    <div class="auth card">
+      <h2>Register / Login</h2>
+      <input type="text" id="name" placeholder="Name (Register için)">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button id="registerBtn">Register</button>
+      <button id="loginBtn">Login</button>
+      <p id="authMessage"></p>
+    </div>
+
+    <!-- TASK SECTION -->
+    <div class="task card hidden">
+      <h2>Yeni Görev Ekle</h2>
+      <input type="text" id="title" placeholder="Başlık">
+      <textarea id="description" placeholder="Açıklama"></textarea>
+      <button id="createTaskBtn">Görev Ekle</button>
+    </div>
+
+    <!-- TASK LIST -->
+    <div class="task-list card hidden">
+      <h2>Görevler</h2>
+      <ul id="tasksList"></ul>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <div class="notifications card hidden">
+      <h2>Bildirimler</h2>
+      <ul id="notifications"></ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
